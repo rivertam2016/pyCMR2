@@ -1,5 +1,10 @@
 # pyCMR2
-Python implementation of CMR2 matlab code from Lohnas et al. (2015)
+
+Python implementation of CMR2 matlab code from:
+
+Lohnas, L. J., Polyn, S. M., & Kahana, M. J. (2015). 
+Expanding the scope of memory search: Modeling intralist and interlist effects in free recall. 
+Psychological review, 122(2), 337-363.
 
 These files contain:
 
@@ -12,5 +17,6 @@ These files contain:
 Files 2-3, as well as the original MATLAB version of this code, are all available 
 on the website of the Computational Memory Lab at UPenn.
 
-4. A python script enabling a basic launch of pyCMR2, with code to reproduce
-Figure 2 from Lohnas et al. (2015).
+4. A python script enabling a basic launch of pyCMR2
+
+5. Code to reproduce the SPC and PFR curves from Figure 2 in Lohnas et al. (2015).

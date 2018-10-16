@@ -692,8 +692,7 @@ def run_CMR2_singleSubj(data_mat, LSA_mat, params):
 
 
 def run_CMR2(LSA_mat, data_path, params, sep_files,
-             filename_stem="", source_info_path=".",
-             nsource_cells=0, subj_id_path="."):
+             filename_stem="", subj_id_path="."):
     """Run CMR2 for all subjects
 
     time_values = time for each item since beginning of recall session

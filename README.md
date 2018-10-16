@@ -16,7 +16,7 @@ Psychological review, 122(2), 337-363.
 
 4. K02_subject_ids.txt: A .txt file to break up K02_data.txt into lists belonging to each subject
 
-<b>The pyCMR2 directory contains:</b>
+<b>The CMR2_files directory contains:</b>
 
 1. pyCMR2:         A python version of the CMR2 code used in Lohnas et al. (2015)
 

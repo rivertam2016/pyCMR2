@@ -68,6 +68,7 @@ def main():
     data_path = '../K02_files/K02_data.txt'
     subjects_path = '../K02_files/K02_subject_ids.txt'
 
+    # run CMR2 on the data
     resp, times = CMR2.run_CMR2(
             LSA_mat=LSA_mat, data_path=data_path,
             params=params_K02, subj_id_path=subjects_path, sep_files=False)

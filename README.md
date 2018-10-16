@@ -14,7 +14,7 @@ Psychological review, 122(2), 337-363.
 
 3. K02_recs.txt: A .txt file containing the recall outputs from Kahana et al. (2002) 
 
-4. K02_subject_ids.txt: A .txt file to break up K02_data.txt into lists belonging to each subject
+4. K02_subject_ids.txt: A .txt file to break up K02_data.txt into the lists belonging to each subject
 
 <b>The CMR2_files directory contains:</b>
 

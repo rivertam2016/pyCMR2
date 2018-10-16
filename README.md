@@ -7,8 +7,8 @@ Expanding the scope of memory search: Modeling intralist and interlist effects i
 Psychological review, 122(2), 337-363.
 
 <b> Notes: </b>
-The K02 data files and the original MATLAB version of this code, are all available 
-on the website of the Computational Memory Lab at UPenn.
+The K02 data files and the original MATLAB version of this code are available 
+on the website of the Computational Memory Lab at the University of Pennsylvania.
 
 Faster / more streamlined implementations of this code are in the pipeline. Stay tuned!
 

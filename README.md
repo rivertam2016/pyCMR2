@@ -6,7 +6,7 @@ Lohnas, L. J., Polyn, S. M., & Kahana, M. J. (2015).
 Expanding the scope of memory search: Modeling intralist and interlist effects in free recall. 
 Psychological review, 122(2), 337-363.
 
-The K02_files directory contains:
+<b>The K02_files directory contains:</b>
 
 1. K02_data.txt: A .txt file containing the presented lists used in Kahana et al. (2002)
 
@@ -16,7 +16,7 @@ The K02_files directory contains:
 
 4. K02_subject_ids.txt: A .txt file to break up K02_data.txt into lists belonging to each subject
 
-The pyCMR2 directory contains:
+<b>The pyCMR2 directory contains:</b>
 
 1. pyCMR2:         A python version of the CMR2 code used in Lohnas et al. (2015)
 

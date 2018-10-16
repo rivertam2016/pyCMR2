@@ -6,11 +6,6 @@ Lohnas, L. J., Polyn, S. M., & Kahana, M. J. (2015).
 Expanding the scope of memory search: Modeling intralist and interlist effects in free recall. 
 Psychological review, 122(2), 337-363.
 
-The K02 data files and the original MATLAB version of this code are available 
-on the website of the Computational Memory Lab at the University of Pennsylvania.
-
-Faster / more streamlined implementations of this code are in the pipeline. Stay tuned!
-
 <b>The K02_files directory contains:</b>
 
 1. K02_data.txt: A .txt file containing the presented lists used in Kahana et al. (2002)
@@ -28,3 +23,10 @@ Faster / more streamlined implementations of this code are in the pipeline. Stay
 2. runCMR2.py:     A python script enabling a basic launch of pyCMR2
 
 5. graph_CMR2.py:  Code to reproduce the SPC and PFR curves from Figure 2 in Lohnas et al. (2015).
+
+<b> Additional notes: </b>
+
+The K02 data files and the original MATLAB version of this code are available 
+on the website of the Computational Memory Lab at the University of Pennsylvania.
+
+Faster / more streamlined implementations of this code are in the pipeline. Stay tuned!

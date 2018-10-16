@@ -17,6 +17,6 @@ These files contain:
 Files 2-3, as well as the original MATLAB version of this code, are all available 
 on the website of the Computational Memory Lab at UPenn.
 
-4. A python script enabling a basic launch of pyCMR2
+4. runCMR2.py -- A python script enabling a basic launch of pyCMR2
 
-5. Code to reproduce the SPC and PFR curves from Figure 2 in Lohnas et al. (2015).
+5. graph_CMR2.py -- Code to reproduce the SPC and PFR curves from Figure 2 in Lohnas et al. (2015).

@@ -887,9 +887,9 @@ def main():
     print("End of time: " + str(time.time() - start_time))
 
     # save CMR2 results
-    np.savetxt('./output/CMR2_recnos_K02.txt',
+    np.savetxt('./CMR2_recnos_K02.txt',
                np.asmatrix(resp), delimiter=',', fmt='%i')
-    np.savetxt('./output/CMR2_times_K02.txt.txt',
+    np.savetxt('./CMR2_times_K02.txt.txt',
                np.asmatrix(times), delimiter=',', fmt='%i')
 
 

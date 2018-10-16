@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 ##########
 #
@@ -90,11 +91,6 @@ def get_spc_pfc(rec_lists, ll):
 
     return spc_mean, spc_sem, pfc_mean, pfc_sem
 
-##########
-#
-#   Define some helper methods
-#
-##########
 
 def main():
 
@@ -112,16 +108,17 @@ def main():
     #
     ###############
 
+    # set paths
     data_path = '../K02_files/K02_data.txt'
     data_rec_path = '../K02_files/K02_recs.txt'
     data_pres = np.loadtxt(data_path, delimiter=',')
     data_rec = np.loadtxt(data_rec_path, delimiter=',')
 
-    # recode data lists for spc, pfc, and lag-CRP analyses
+    # recode data lists for spc and pfc analyses
     recoded_lists = recode_for_spc(data_rec, data_pres)
 
     # save out the recoded lists in case you want to read this in later
-    np.savetxt('data_recoded.txt', recoded_lists,
+    np.savetxt('./output/data_recoded.txt', recoded_lists,
                delimiter=',', fmt='%.0d')
 
     # get spc & pfc
@@ -134,13 +131,12 @@ def main():
     #
     ###############
 
-    rec_nos = np.loadtxt('CMR2_recnos_K02.txt', delimiter=',')
+    rec_nos = np.loadtxt('./output/CMR2_recnos_K02.txt', delimiter=',')
     cmr_recoded_output = recode_for_spc(rec_nos, data_pres)
 
     # get the model's spc and pfc predictions:
     (this_spc, this_spc_sem, this_pfc,
     this_pfc_sem) = get_spc_pfc(cmr_recoded_output, ll)
-
 
     print("\nData vals: ")
     print(target_spc)
@@ -155,6 +151,11 @@ def main():
     #   Plot graphs
     #
     ###############
+
+    # make a directory in which to save the figures
+    figs_dir = 'Figs'
+    if not os.path.exists(figs_dir):
+        os.mkdir(figs_dir)
 
     # line width
     lw = 2

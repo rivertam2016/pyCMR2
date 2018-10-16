@@ -1,6 +1,6 @@
 import pyCMR2 as CMR2
 import numpy as np
-
+import os
 
 def main():
     """
@@ -71,6 +71,12 @@ def main():
             LSA_mat=LSA_mat, data_path=data_path,
             params=params_K02, subj_id_path=subjects_path, sep_files=False)
 
+    # make a directory in which to save the output
+    output_dir = 'output'
+    if not os.path.exists(output_dir):
+        os.mkdir(output_dir)
+
+    # save the output
     np.savetxt('./output/CMR2_recnos_K02.txt',  resp, delimiter=',', fmt='%.0d')
     np.savetxt('./output/CMR2_times_K02.txt', times, delimiter=',', fmt='%.0d')
 

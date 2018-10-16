@@ -61,18 +61,18 @@ def main():
     }
 
     # set data and LSA matrix paths
-    LSA_path = './K02_files/K02_LSA.txt'
+    LSA_path = '../K02_files/K02_LSA.txt'
     LSA_mat = np.loadtxt(LSA_path, delimiter=',', dtype=np.float32)
 
-    data_path = './K02_files/K02_data.txt'
-    subjects_path = './K02_files/K02_subject_ids.txt'
+    data_path = '../K02_files/K02_data.txt'
+    subjects_path = '../K02_files/K02_subject_ids.txt'
 
     resp, times = CMR2.run_CMR2(
             LSA_mat=LSA_mat, data_path=data_path,
             params=params_K02, subj_id_path=subjects_path, sep_files=False)
 
-    np.savetxt('CMR2_recnos_K02.txt',  resp,  delimiter=',', fmt='%.0d')
-    np.savetxt('CMR2_times_K02.txt', times, delimiter=',', fmt='%.0d')
+    np.savetxt('./output/CMR2_recnos_K02.txt',  resp, delimiter=',', fmt='%.0d')
+    np.savetxt('./output/CMR2_times_K02.txt', times, delimiter=',', fmt='%.0d')
 
 if __name__ == "__main__":
     main()

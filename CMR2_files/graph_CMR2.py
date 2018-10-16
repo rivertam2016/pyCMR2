@@ -112,8 +112,8 @@ def main():
     #
     ###############
 
-    data_path = './K02_files/K02_data.txt'
-    data_rec_path = './K02_files/K02_recs.txt'
+    data_path = '../K02_files/K02_data.txt'
+    data_rec_path = '../K02_files/K02_recs.txt'
     data_pres = np.loadtxt(data_path, delimiter=',')
     data_rec = np.loadtxt(data_rec_path, delimiter=',')
 

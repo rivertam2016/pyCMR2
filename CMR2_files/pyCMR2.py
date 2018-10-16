@@ -2,9 +2,9 @@
 retrieval model from Lohnas et al. (2015). Please email Rivka Cohen at
 rivkat.cohen@gmail.com with questions or bug reports!"""
 
-# when hooked up to some libraries, numpy uses multithreading. This will cause
-# problems for you if you try to distribute on a cluster, so turn this off
-# with mkl.
+# when hooked up to some libraries, numpy.dot() uses multithreading.
+# This will cause problems for you if you try to distribute on a cluster,
+# so turn this off with mkl.
 import mkl
 mkl.set_num_threads(1)
 import numpy as np
@@ -150,11 +150,11 @@ class CMR2(object):
                 # place into this session's LSA cos theta matrix
                 self.exp_LSA[int(row_idx), int(col_idx)] = cos_theta
 
-        ######
+        ##########
         #
         #   Set the rest of the variables we will need from the inputted params
         #
-        ######
+        ##########
 
         # beta used by update_context_temp(); more details in doc string
         self.beta_in_play = self.params['beta_enc']
@@ -173,67 +173,17 @@ class CMR2(object):
         # list of items recalled throughout model run
         self.recalled_items = []
 
-        #####
-        #
-        #   Set up the learning-weight matrices, L_CF and L_FC
-        #
-        #####
-
-        # set up scalar matrix for M_CF
-        self.L_CF = np.ones((self.nelements, self.nelements), dtype=np.float32)
-
-        # NW quadrant
-        self.L_CF[:self.templength, :self.templength] = self.params['gamma_cf']
-        # NE quadrant
-        self.L_CF[:self.templength, self.templength:] = 0.0
-        # SW quadrant
-        self.L_CF[self.templength:, :self.templength] = 0.0
-        # SE quadrant
-        self.L_CF[self.templength:, self.templength:] = 0.0
-
-        # set up scalar matrix for M_FC
-        self.L_FC = np.ones((self.nelements, self.nelements), dtype=np.float32)
-
-        # NW quadrant
-        self.L_FC[:self.templength, :self.templength] = self.params['gamma_fc']
-        # NE quadrant
-        self.L_FC[:self.templength, self.templength:] = 0.0
-        # SW quadrant
-        self.L_FC[self.templength:, :self.templength] = 0.0
-        # SE quadrant
-        self.L_FC[self.templength:, self.templength:] = 0.0
-
         ##########
         #
-        #   Set up the learning-weight matrices, L_CF_retrieval and L_FC_retrieval
+        #   Set up the learning rates for during retrieval.
         #   If you want different learning rates than during encoding, this is
-        #   the place to change those. By default, these are set to encoding rates.
+        #   the place to change those.
+        #   By default, these are set to the encoding rates.
         #
         ##########
 
-        # make a copy of L_CF to make an analogous matrix for during retrieval
-        self.L_CF_retrieval = self.L_CF.copy()
-
-        # NW quadrant
-        self.L_CF_retrieval[:self.templength, :self.templength] = self.params['gamma_cf']
-        # NE quadrant
-        self.L_CF_retrieval[:self.templength, self.templength:] = 0.0
-        # SW quadrant
-        self.L_CF_retrieval[self.templength:, :self.templength] = 0.0
-        # SE quadrant
-        self.L_CF_retrieval[self.templength:, self.templength:] = 0.0
-
-        # make a copy of L_FC to make an analogous matrix for during retrieval
-        self.L_FC_retrieval = self.L_FC.copy()
-
-        # NW quadrant
-        self.L_FC_retrieval[:self.templength, :self.templength] = self.params['gamma_fc']
-        # NE quadrant
-        self.L_FC_retrieval[:self.templength, self.templength:] = 0.0
-        # SW quadrant
-        self.L_FC_retrieval[self.templength:, :self.templength] = 0.0
-        # SE quadrant
-        self.L_FC_retrieval[self.templength:, self.templength:] = 0.0
+        self.gamma_cf_retrieval = self.params['gamma_cf']
+        self.gamma_fc_retrieval = self.params['gamma_fc']
 
         ##########
         #
@@ -521,11 +471,11 @@ class CMR2(object):
 
                     # Update M_FC
                     M_FC_exp = np.dot(self.c_old, self.f_net)
-                    self.M_FC += np.multiply(M_FC_exp, self.L_FC_retrieval)
+                    self.M_FC += np.multiply(M_FC_exp, self.gamma_fc_retrieval)
 
                     # Update M_CF
                     M_CF_exp = np.dot(self.f_net.T, self.c_old.T)
-                    self.M_CF += np.multiply(M_CF_exp, self.L_CF_retrieval)
+                    self.M_CF += np.multiply(M_CF_exp, self.gamma_cf_retrieval)
 
             else:
                 continue
@@ -636,11 +586,11 @@ class CMR2(object):
 
             # Update M_FC
             M_FC_exp = np.dot(self.c_old, self.f_net)
-            self.M_FC += np.multiply(M_FC_exp, self.L_FC)
+            self.M_FC += np.multiply(M_FC_exp, self.params['gamma_fc'])
 
             # Update M_CF
             M_CF_exp = np.dot(self.f_net.T, self.c_old.T)
-            self.M_CF += np.multiply(M_CF_exp, self.L_CF) * prim_vec[i]
+            self.M_CF += np.multiply(M_CF_exp, self.params['gamma_cf']) * prim_vec[i]
 
             # Update location of study item index
             self.study_item_idx += 1
@@ -921,11 +871,11 @@ def main():
     np.set_printoptions(precision=5)
 
     # set data and LSA matrix paths
-    LSA_path = './K02_files/K02_LSA.txt'
+    LSA_path = '../K02_files/K02_LSA.txt'
     LSA_mat = np.loadtxt(LSA_path, delimiter=',', dtype=np.float32)
 
-    data_path = './K02_files/K02_data.txt'
-    subjects_path = './K02_files/K02_subject_ids.txt'
+    data_path = '../K02_files/K02_data.txt'
+    subjects_path = '../K02_files/K02_subject_ids.txt'
 
     start_time = time.time()
 
@@ -937,8 +887,10 @@ def main():
     print("End of time: " + str(time.time() - start_time))
 
     # save CMR2 results
-    np.savetxt('CMR2_recnos_K02.txt', np.asmatrix(resp), delimiter=',', fmt='%i')
-    np.savetxt('CMR2_times_K02.txt.txt', np.asmatrix(times), delimiter=',', fmt='%i')
+    np.savetxt('./output/CMR2_recnos_K02.txt',
+               np.asmatrix(resp), delimiter=',', fmt='%i')
+    np.savetxt('./output/CMR2_times_K02.txt.txt',
+               np.asmatrix(times), delimiter=',', fmt='%i')
 
 
 if __name__ == "__main__":

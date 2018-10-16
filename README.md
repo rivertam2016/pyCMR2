@@ -6,7 +6,6 @@ Lohnas, L. J., Polyn, S. M., & Kahana, M. J. (2015).
 Expanding the scope of memory search: Modeling intralist and interlist effects in free recall. 
 Psychological review, 122(2), 337-363.
 
-<b> Notes: </b>
 The K02 data files and the original MATLAB version of this code are available 
 on the website of the Computational Memory Lab at the University of Pennsylvania.
 

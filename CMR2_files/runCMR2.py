@@ -4,14 +4,15 @@ import os
 
 def main():
     """
-    Set data & LSA paths as pointing to a data and LSA matrix, respectively.
-    Files should be formatted as in prior CMR papers - i.e., typical CML format.
+    Set data & LSA paths pointing to a data and LSA matrix, respectively.
 
-    If data files are instead separate for each Subj., then set data_path
-    to the path of the data directory, set sep_files=True,
-    and add the parameter, filename_stem = "stat_data_LTP",
-    such as for files named:
-    "stat_data_LTP069.mat", "stat_data_LTP070.mat", etc.
+    In the Kahana et al. (2002) data (i.e., the K02 files), all subjects'
+    sessions are concatenated into one file. The code is built to handle
+    files in this way and separates them according to the indices obtained
+    from the K02_subject_ids.txt file.
+
+    There is some scratch code to try to work toward handling files in other
+    formats, but don't use it yet. i.e. it is not operational.
 
     """
 

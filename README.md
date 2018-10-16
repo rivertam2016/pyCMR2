@@ -8,13 +8,13 @@ Psychological review, 122(2), 337-363.
 
 <b>The K02_files directory contains:</b>
 
-1. K02_data.txt: Contains the presented lists used in Kahana et al. (2002)
+1. K02_data.txt: The presented lists used in Kahana et al. (2002)
 
-2. K02_LSA.txt:  Contains LSA cos-theta values (inter-item similarities) for these stimuli
+2. K02_LSA.txt:  The LSA cos-theta values (inter-item similarities) for these stimuli
 
-3. K02_recs.txt: Contains the recall outputs from Kahana et al. (2002) 
+3. K02_recs.txt: The recall outputs from Kahana et al. (2002) 
 
-4. K02_subject_ids.txt: Contains indices to break up K02_data.txt into the lists belonging to each subject
+4. K02_subject_ids.txt: Indices to break up K02_data.txt into the lists belonging to each subject
 
 <b>The CMR2_files directory contains:</b>
 

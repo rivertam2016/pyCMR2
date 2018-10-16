@@ -1,6 +1,6 @@
 # pyCMR2
 
-Python implementation of CMR2 matlab code from:
+This project contains a Python 3 implementation of CMR2 matlab code from the paper:
 
 Lohnas, L. J., Polyn, S. M., & Kahana, M. J. (2015). 
 Expanding the scope of memory search: Modeling intralist and interlist effects in free recall. 

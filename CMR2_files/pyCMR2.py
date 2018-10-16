@@ -74,14 +74,13 @@ class CMR2(object):
             alter this; simply submit sheets of presented items a session
             at a time rather than a subject at a time.
 
-        ndistractors: There are 2x as many distractors as there are lists,
+        ndistractors: There are as many distractors as there are lists,
             because presenting a distractor is how we model the shift in context
             that occurs between lists.
-            And, each list has a distractor that represents the distractor task.
 
             Additionally, an initial orthogonal item is presented prior to the
-            first list, so that the system does
-            not start with context as an empty 0 vector.
+            first list, so that the system does not start with context as an empty 
+            0 vector. We add this to the number of distractors too.
 
             In the weight matrices & context vectors, the distractors' region
             is located after study item indices.

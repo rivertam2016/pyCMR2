@@ -20,3 +20,5 @@ on the website of the Computational Memory Lab at UPenn.
 4. runCMR2.py -- A python script enabling a basic launch of pyCMR2
 
 5. graph_CMR2.py -- Code to reproduce the SPC and PFR curves from Figure 2 in Lohnas et al. (2015).
+
+Faster / more streamlined implementations of this code are in the pipeline. Stay tuned!

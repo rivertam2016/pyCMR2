@@ -407,6 +407,16 @@ class CMR2(object):
                 # recover item's index from the original pool of item indices
                 winner_sorted_idx = in_indices[winner_accum_idx]
 
+                # ---------------------------------------------------------------#
+                # multiply all thresholds by the updated value
+                self.x_thresh_full = np.add(np.multiply(
+                    np.subtract(self.x_thresh_full, 1), self.params['alpha']), 1)
+
+                # then just reset the new item threshold
+                self.x_thresh_full[winner_sorted_idx] = 1 + self.params['omega']
+
+                # ----------------------------------------------------------------#
+
                 # get original item ID for this item
                 winner_ID = np.sort(self.all_session_items)[winner_sorted_idx]
 
@@ -456,13 +466,6 @@ class CMR2(object):
                 recalled_items.append(winner_ID)
                 RTs.append(this_RT)
                 times_since_start.append(time_passed)
-
-                # Update the item's recall threshold & its prior recalls count
-                self.x_thresh_full[winner_sorted_idx] = (
-                    1 + self.params['omega'] * (
-                        self.params['alpha'] ** self.n_prior_recalls[
-                            winner_sorted_idx]))
-                self.n_prior_recalls[winner_sorted_idx] += 1
 
                 # if learning is enabled during recall process,
                 # update the matrices

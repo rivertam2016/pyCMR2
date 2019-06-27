@@ -662,23 +662,11 @@ def run_CMR2_singleSubj(data_mat, LSA_mat, params):
         params=params,
         LSA_mat=LSA_mat, data_mat=data_mat)
 
-    # Present first list
-    this_CMR.present_list()
-
     # layer LSA cos theta values onto the weight matrices
     this_CMR.create_semantic_structure()
 
-    # Recall the first list
-    rec_items, RTs_thislist, times_from_start \
-        = this_CMR.recall_session()
-
-    # Append values
-    resp_values.append(rec_items)
-    RT_values.append(RTs_thislist)
-    time_values.append(times_from_start)
-
-    # Run CMR2 for all lists after the 0th list
-    for i in range(len(this_CMR.pres_list_nos) - 1):
+    # Run CMR2 for each list
+    for i in range(len(this_CMR.pres_list_nos)):
         # present new list
         this_CMR.present_list()
 
